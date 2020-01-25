@@ -37,7 +37,7 @@
 			                <a class="nav-link scroll-link" href="#github">Github</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link scroll-link" href="https://github.com/MeshedPotato/">Telegram</a>
+			                <a class="nav-link scroll-link" href="https://t.me/DeBitcoinMesh">Telegram</a>
 			            </li>
 			         
 			        </ul>
@@ -54,7 +54,7 @@
                     <div class="col-md-8 offset-md-2 text">
                         <h1 class="wow fadeInLeftBig">Meshed Potato</h1>
                         <div class="description wow fadeInLeftBig">
-                        	<p>
+                        	<p class='headerIntro'>
                          	Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
 	                    		sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.
                         	</p>
@@ -75,19 +75,9 @@
 	                    <div class="about-us-box-text">
 	                    	<h3>The Mission</h3>
 	                    	<p class="medium-paragraph">
-	                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-	                    		sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.
+	                    		
 	                    	</p>
-	                    	<p>
-	                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-	                    		Ut wisi enim ad minim veniam, quis nostrud. 
-	                    		Exerci tation ullamcorper suscipit <a href="#">lobortis nisl</a> ut aliquip ex ea commodo consequat. 
-	                    		Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl. 
-	                    	</p>
-	                    	<p>
-	                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-	                    		Ut wisi enim ad minim veniam, quis nostrud.
-	                    	</p>
+	                    	
                             
                                                     <a class="btn btn-primary btn-link-1 scroll-link" href="https://github.com/MeshedPotato/">Visit</a>
 
@@ -159,6 +149,30 @@ canvas {
 
        <script>
         $(function() {
+            
+            function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
+//usage:
+readTextFile("info.json", function(text){
+    var data = JSON.parse(text);
+    $('.headerIntro').html(data.headerIntro);
+    $('.medium-paragraph').html(data.Mission);
+});
+            
+            
+            
+            
+            
   particlesJS("particles-js", {
     "particles": {
       "number": {
